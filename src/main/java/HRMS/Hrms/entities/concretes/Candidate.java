@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table(name="candidates")
-@PrimaryKeyJoinColumn(name = "id")
+@PrimaryKeyJoinColumn(name = "id",referencedColumnName = "id")
 public class Candidate extends User{
 	@Column(name="first_name")
 	private String firstName;

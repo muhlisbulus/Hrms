@@ -1,12 +1,11 @@
 package HRMS.Hrms.entities.concretes;
 
-
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -18,26 +17,24 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@Entity
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
 
-@Table (name="job_titles")
+@Table(name="cities")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "jobs"})
-
-public class Jobtitle  {
-	@Id
-	@GeneratedValue
+public class City {
 	
-	@Column(name="job_title_id")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id")
 	private int id;
 	
-	@Column(name="title")
-	private String title;
+	@Column(name="city_name")
+	private String cityName;
 	
-	@OneToMany(mappedBy = "jobtitle")
+	@OneToMany(mappedBy = "city")
 	private List<Job> jobs;
-	
 	
 	
 
