@@ -1,5 +1,6 @@
 package HRMS.Hrms.business.abtracts;
 
+import java.util.Date;
 import java.util.List;
 
 import HRMS.Hrms.core.utilities.results.DataResult;
@@ -13,8 +14,7 @@ public interface CandidateService {
 	   
 		DataResult<List<Candidate>> findByIdentityNumber(String identityNumber);
 		DataResult<List<Candidate>> findByEmail(String email);
-		
-		DataResult<Boolean> checkValidateByPersonalInfo(String identityNumber,String firstName,String lastName,String birth_date);
+	    DataResult<Boolean> checkValidateByPersonalInfo(String identityNumber,String firstName,String lastName,Date birth_Date);
 		
 		
 		

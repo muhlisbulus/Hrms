@@ -1,5 +1,6 @@
 package HRMS.Hrms.business.concretes;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -80,11 +81,15 @@ public class CandidateManager implements CandidateService {
 		return new  SuccessDataResult<List<Candidate>>(this.candidatedao.findByEmail(email));
 	}
 
+	
+	
+
+
+
 	@Override
 	public DataResult<Boolean> checkValidateByPersonalInfo(String identityNumber, String firstName, String lastName,
-			String birth_date) {
-	
-		return new DataResult<>(this.validationservice.validationByMernis(identityNumber, firstName, lastName, birth_date),true);
+			Date birth_Date) {
+		return new DataResult<>(this.validationservice.validationByMernis(identityNumber, firstName, lastName, birth_Date),true);
 	}
 
 	

@@ -3,6 +3,8 @@ package HRMS.Hrms.core.utilities.adapters;
 
 
 
+import java.util.Date;
+
 import org.springframework.stereotype.Service;
 
 
@@ -10,7 +12,7 @@ import org.springframework.stereotype.Service;
 public class MernisServiceAdapter implements ValidationService {
 
 	@Override
-	public Boolean validationByMernis(String identityNumber, String firstName, String lastName, String birth_date) {
+	public Boolean validationByMernis(String identityNumber, String firstName, String lastName, Date birth_Date) {
 		return true;
 		
 		
