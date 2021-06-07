@@ -47,9 +47,9 @@ public class CandidateManager implements CandidateService {
 		var checkidentityNumber=this.findByIdentityNumber(candidate.getIdentityNumber()).getData().size() !=0;
 		var checkValidateByPersonal=!this.checkValidateByPersonalInfo(candidate.getIdentityNumber(), candidate.getFirstName(), 
 				candidate.getLastName(), candidate.getBirth_Date()).getData();
-		 var checkFields=!CandidateCheckHelper.allFieldsAreRequried(candidate);
+		
 		 
-		 if(checkEmail||checkidentityNumber||checkValidateByPersonal||checkFields) {
+		 if(checkEmail||checkidentityNumber||checkValidateByPersonal) {
 			 
 			 String errorMessage="";
 		 
@@ -58,9 +58,6 @@ public class CandidateManager implements CandidateService {
 		 }
 	     if(checkValidateByPersonal) {
 	    	 errorMessage+="Gerçek bir insan değil.";
-	     }
-	     if(checkFields) {
-	    	 errorMessage+="Tüm Alanlar zorunludur";
 	     }
 		return new ErrorResult(errorMessage);
 		 }
