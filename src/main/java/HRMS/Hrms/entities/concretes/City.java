@@ -29,7 +29,7 @@ public class City {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
-	private int id;
+	private int cityId;
 	
     @NotBlank(message ="Bu Alan Boş Geçilemez")
 	@Column(name="city_name")

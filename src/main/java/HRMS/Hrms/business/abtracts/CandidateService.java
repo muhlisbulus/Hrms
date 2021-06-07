@@ -14,7 +14,7 @@ public interface CandidateService {
 	   
 		DataResult<List<Candidate>> findByIdentityNumber(String identityNumber);
 		DataResult<List<Candidate>> findByEmail(String email);
-	    DataResult<Boolean> checkValidateByPersonalInfo(String identityNumber,String firstName,String lastName,Date birth_Date);
+	    DataResult<Boolean> checkValidateByPersonalInfo(String identityNumber,String firstName,String lastName,String birth_Date);
 		
 		
 		

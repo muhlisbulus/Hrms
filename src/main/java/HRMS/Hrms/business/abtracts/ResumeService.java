@@ -4,12 +4,17 @@ import java.util.List;
 
 import HRMS.Hrms.core.utilities.results.DataResult;
 import HRMS.Hrms.core.utilities.results.Result;
-import HRMS.Hrms.entities.concretes.Resume;
+
+import HRMS.Hrms.entities.dtos.ResumeAddDto;
+import HRMS.Hrms.entities.dtos.ResumeGetDto;
 
 
 public interface ResumeService {
-	Result add(Resume resume);
+	Result add(ResumeAddDto resumeAddDto);
 	
-	DataResult<List<Resume>> getAll();
+	DataResult<List<ResumeGetDto>> getAll();
+	
+	
+	DataResult<List<ResumeGetDto>> findAllByCandidateUserId(int id);
 
 }

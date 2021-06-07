@@ -4,11 +4,12 @@ import java.util.List;
 
 import HRMS.Hrms.core.utilities.results.DataResult;
 import HRMS.Hrms.core.utilities.results.Result;
-import HRMS.Hrms.entities.concretes.Technology;
+
+import HRMS.Hrms.entities.dtos.TechnologyDto;
 
 public interface TechnologyService {
-	Result add(Technology technology);
+	Result add(TechnologyDto technologyDto);
 	
-	DataResult<List<Technology>> getAll();
+	DataResult<List<TechnologyDto>> getAll();
 
 }

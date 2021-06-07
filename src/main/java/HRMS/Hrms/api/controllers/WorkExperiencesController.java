@@ -2,6 +2,8 @@ package HRMS.Hrms.api.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,7 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 import HRMS.Hrms.business.abtracts.WorkExperienceService;
 import HRMS.Hrms.core.utilities.results.DataResult;
 import HRMS.Hrms.core.utilities.results.Result;
-import HRMS.Hrms.entities.concretes.WorkExperience;
+
+import HRMS.Hrms.entities.dtos.WorkExperienceDto;
 
 @RestController
 @RequestMapping("/api/works")
@@ -25,20 +28,16 @@ public class WorkExperiencesController {
 		this.experienceService = experienceService;
 	}
 	@PostMapping("/add")
-	public Result add(@RequestBody WorkExperience workexperience) {
+	public Result add(@Valid @RequestBody WorkExperienceDto workexperience) {
 		return this.experienceService.add(workexperience);
 		
 	}
 	@GetMapping("/getAll")
-	DataResult<List<WorkExperience>> getAll(){
+	DataResult<List<WorkExperienceDto>> getAll(){
 		return this.experienceService.getAll();
 		
 	}
-	@GetMapping("/endYearWork")
-	DataResult<List<WorkExperience>> sortByEndYearOfWork(){
-		return this.experienceService.sortByEndYearOfWork();
-		
-	}
+	
 
 
 }

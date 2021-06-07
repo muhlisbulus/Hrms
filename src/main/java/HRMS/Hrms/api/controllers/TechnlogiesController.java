@@ -2,6 +2,8 @@ package HRMS.Hrms.api.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,7 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 import HRMS.Hrms.business.abtracts.TechnologyService;
 import HRMS.Hrms.core.utilities.results.DataResult;
 import HRMS.Hrms.core.utilities.results.Result;
-import HRMS.Hrms.entities.concretes.Technology;
+
+import HRMS.Hrms.entities.dtos.TechnologyDto;
 
 @RestController
 @RequestMapping("/api/technlogies")
@@ -25,12 +28,12 @@ public TechnlogiesController(TechnologyService technologyService) {
 	this.technologyService = technologyService;
 }
 @PostMapping("/add")
-public Result add(@RequestBody Technology technology) {
+public Result add(@Valid @RequestBody TechnologyDto technology) {
 	return this.technologyService.add(technology);
 	
 }
 @GetMapping("/getAll")
-public DataResult<List<Technology>> getAll(){
+public DataResult<List<TechnologyDto>> getAll(){
 	return this.technologyService.getAll();
 	
 }

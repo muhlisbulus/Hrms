@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 import HRMS.Hrms.business.abtracts.ResumeService;
 import HRMS.Hrms.core.utilities.results.DataResult;
 import HRMS.Hrms.core.utilities.results.Result;
-import HRMS.Hrms.entities.concretes.Resume;
+
+import HRMS.Hrms.entities.dtos.ResumeAddDto;
+import HRMS.Hrms.entities.dtos.ResumeGetDto;
 
 @RestController
 @RequestMapping("/api/resumes")
@@ -24,14 +26,21 @@ public class ResumesController {
 		this.resumeService = resumeService;
 	}
 	@GetMapping("/add")
-	public Result add(Resume resume) {
+	public Result add(ResumeAddDto resume) {
 		return this.resumeService.add(resume);
 		
 	}
 	
 	@GetMapping("/getAll")
-	public DataResult<List<Resume>> getAll(){
+	public DataResult<List<ResumeGetDto>> getAll(){
 		return this.resumeService.getAll();
+	}
+	
+	@GetMapping("/findAllByCandidateUserId")
+	public DataResult<List<ResumeGetDto>> findAllByCandidateUserId(int id){
+		return this.resumeService.findAllByCandidateUserId(id);
+				
+		
 	}
 
 }

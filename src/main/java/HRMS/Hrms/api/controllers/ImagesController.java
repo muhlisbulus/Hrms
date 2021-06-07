@@ -1,17 +1,18 @@
 package HRMS.Hrms.api.controllers;
 
-import java.util.List;
+import java.io.IOException;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import HRMS.Hrms.business.abtracts.ImageService;
-import HRMS.Hrms.core.utilities.results.DataResult;
 import HRMS.Hrms.core.utilities.results.Result;
 import HRMS.Hrms.entities.concretes.Image;
 
@@ -28,14 +29,10 @@ public class ImagesController {
 		this.imageService = imageService;
 	}
 	@PostMapping("/add")
-	public Result add(@RequestBody Image image) {
-		return this.imageService.add(image);
-	}
-	
-		@GetMapping("/getAll")
-	public DataResult<List<Image>> getAll(){
-		return this.imageService.getAll();
+	public Result add(@ModelAttribute("image") Image image,@RequestParam ("multipartFile") MultipartFile multipartFile) throws IOException {
 		
+		return this.imageService.add(image, multipartFile);
 	}
 	
+		
 }

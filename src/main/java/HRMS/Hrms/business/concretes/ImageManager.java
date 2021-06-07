@@ -1,11 +1,17 @@
 package HRMS.Hrms.business.concretes;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.cloudinary.Cloudinary;
 
 import HRMS.Hrms.business.abtracts.ImageService;
+import HRMS.Hrms.core.utilities.CloudinaryService;
 import HRMS.Hrms.core.utilities.results.DataResult;
 import HRMS.Hrms.core.utilities.results.Result;
 import HRMS.Hrms.core.utilities.results.SuccessDataResult;
@@ -17,6 +23,7 @@ import HRMS.Hrms.entities.concretes.Image;
 public class ImageManager implements ImageService {
 	
 	private ImageDao imageDao;
+	private CloudinaryService cloudinaryservice;
 
 	@Autowired
 	public ImageManager(ImageDao imageDao) {
@@ -25,16 +32,14 @@ public class ImageManager implements ImageService {
 	}
 
 	@Override
-	public Result add(Image image) {
-	    this.imageDao.save(image);
-		return new SuccessResult("başarıyla eklendi");
+	public Result add(Image image, MultipartFile multipartFile) throws IOException {
+		Map photoMap = cloudinaryservice.photoUpload(multipartFile);
+		image.setImageUrl(photoMap.get("url").toString());
+		 this.imageDao.save(image);
+		 return new SuccessResult("Foto eklendi");
 	}
 
-	@Override
-	public DataResult<List<Image>> getAll() {
-		
-		return new SuccessDataResult<List<Image>>(this.imageDao.findAll());
-	}
+	
 
 
 

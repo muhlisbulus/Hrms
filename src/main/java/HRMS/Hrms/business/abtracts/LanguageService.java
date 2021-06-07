@@ -4,11 +4,12 @@ import java.util.List;
 
 import HRMS.Hrms.core.utilities.results.DataResult;
 import HRMS.Hrms.core.utilities.results.Result;
-import HRMS.Hrms.entities.concretes.Language;
+
+import HRMS.Hrms.entities.dtos.LanguageDto;
 
 public interface LanguageService {
-	Result add(Language language);
+	Result add(LanguageDto languageDto);
 	
-	DataResult<List<Language>> getAll();
+	DataResult<List<LanguageDto>> getAll();
 
 }

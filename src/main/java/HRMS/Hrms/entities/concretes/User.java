@@ -10,7 +10,7 @@ import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,20 +27,16 @@ public abstract class User {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
-	private int Userid;
+	private int userId;
 	
-	
+	@Email(message="email formatında olmalıdır")
+	@NotBlank(message="Bu alan boş bırakılamaz")
 	@Column(name="email")
-	@Email
-	@NotBlank
-	@NotNull
 	private String email;
 	
 
-	
+	@NotBlank(message="Bu alan boş olamaz")
 	@Column(name="password")
-	@NotBlank
-	@NotNull
 	private String password;
 
 }

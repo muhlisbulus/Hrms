@@ -1,18 +1,19 @@
 package HRMS.Hrms.business.abtracts;
 
-import java.util.List;
+import java.io.IOException;
 
-import HRMS.Hrms.core.utilities.results.DataResult;
+import org.springframework.web.multipart.MultipartFile;
+
 import HRMS.Hrms.core.utilities.results.Result;
 import HRMS.Hrms.entities.concretes.Image;
 
 public interface ImageService {
 	
-	Result add(Image image);
+     
+	Result add(Image image,MultipartFile multipartFile) throws IOException;
 	
-  
+
 	
-	DataResult<List<Image>> getAll();
 	
 	
 	
