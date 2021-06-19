@@ -7,6 +7,7 @@ import java.util.List;
 import HRMS.Hrms.core.utilities.results.DataResult;
 import HRMS.Hrms.core.utilities.results.Result;
 import HRMS.Hrms.entities.concretes.Job;
+import HRMS.Hrms.entities.dtos.JobPostingDto;
 
 public interface JobService {
 	DataResult<List<Job>> getAll();
@@ -20,5 +21,9 @@ public interface JobService {
    DataResult<List<Job>>findByActiveTrueOrderByCreatedTimeDesc();
 	
 	DataResult<Job> findByIdAndActiveTrue(int id);
+	
+	DataResult<Job> updateActive(int id,boolean active);
+	
+
 
 }

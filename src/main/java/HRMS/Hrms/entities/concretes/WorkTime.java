@@ -1,16 +1,18 @@
 package HRMS.Hrms.entities.concretes;
 
-
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
@@ -18,24 +20,24 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@Entity
 @AllArgsConstructor
 @NoArgsConstructor
-
-@Table (name="job_titles")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "jobs"})
-
-public class Jobtitle  {
+@Entity
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler", "jobs" })
+@Table(name="work_time")
+public class WorkTime {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	
-	@Column(name="job_title_id")
+	@Column(name="id")
 	private int id;
 	
-	@Column(name="title")
-	private String title;
+	@Column(name="name")
+	private String name;
 	
 	
+	@OneToMany(mappedBy = "workTime")
+	private List<Job> jobs;
 	
 
 }

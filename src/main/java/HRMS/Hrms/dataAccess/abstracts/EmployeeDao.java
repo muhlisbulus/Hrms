@@ -7,6 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import HRMS.Hrms.entities.concretes.Employee;
 
 public interface EmployeeDao extends JpaRepository<Employee,Integer> {
-	List<Employee> findByEmail(String email);
+	//List<Employee> findByEmail(String email);
 
 }

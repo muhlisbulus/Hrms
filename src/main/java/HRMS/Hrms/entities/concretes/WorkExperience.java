@@ -1,6 +1,6 @@
 package HRMS.Hrms.entities.concretes;
 
-import java.util.Date;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -33,10 +33,10 @@ public class WorkExperience {
 	
 	@NotBlank(message ="Bu Alan Boş Geçilemez")
 	@Column(name="start_year_work")
-	private Date startYearOfWork;
+	private String startYearOfWork;
 	
 	@Column(name="end_year_work")
-	private Date endYearOfWork;
+	private String endYearOfWork;
 	
 	@ManyToOne()
 	@JoinColumn(name="job_title_id")

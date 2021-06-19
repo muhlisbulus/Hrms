@@ -5,32 +5,30 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import HRMS.Hrms.business.abtracts.JobtitleService;
+import HRMS.Hrms.business.abtracts.CityService;
 import HRMS.Hrms.core.utilities.results.DataResult;
-
-import HRMS.Hrms.entities.concretes.Jobtitle;
+import HRMS.Hrms.entities.concretes.City;
 
 @RestController
-@RequestMapping("/api/titles")
+@RequestMapping("/api/cities")
 @CrossOrigin
-
-public class JobtitlesController {
+public class CitiesController {
+	private CityService cityService;
 	
-	private JobtitleService jobtitleService;
-	
-    @Autowired
-	public JobtitlesController(JobtitleService jobtitleService) {
+	@Autowired
+	 public CitiesController(CityService cityService) {
 		super();
-		this.jobtitleService = jobtitleService;
+		this.cityService = cityService;
 	}
-    @GetMapping("/getall")
-	public DataResult<List<Jobtitle>> getAll() {
+	
+    @GetMapping("/getAll")
+	public DataResult<List<City>> getAll(){
 		
-		return this.jobtitleService.getAll();
-	}
-    
+		return this.cityService.getAll();
+		 
+	 }
+
 }

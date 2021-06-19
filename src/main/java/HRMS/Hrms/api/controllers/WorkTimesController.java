@@ -5,32 +5,29 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import HRMS.Hrms.business.abtracts.JobtitleService;
+import HRMS.Hrms.business.abtracts.WorkTimeService;
 import HRMS.Hrms.core.utilities.results.DataResult;
-
-import HRMS.Hrms.entities.concretes.Jobtitle;
+import HRMS.Hrms.entities.concretes.WorkTime;
 
 @RestController
-@RequestMapping("/api/titles")
+@RequestMapping("/api/worktimes")
 @CrossOrigin
+public class WorkTimesController {
+	
+	private WorkTimeService workTimeService;
+	
+	@Autowired
+	public WorkTimesController(WorkTimeService workTimeService) {
+	
+		this.workTimeService = workTimeService;
+	}
 
-public class JobtitlesController {
-	
-	private JobtitleService jobtitleService;
-	
-    @Autowired
-	public JobtitlesController(JobtitleService jobtitleService) {
-		super();
-		this.jobtitleService = jobtitleService;
+	@GetMapping("/getAll")
+	public DataResult<List<WorkTime>> getAll(){
+		return this.workTimeService.getAll();
 	}
-    @GetMapping("/getall")
-	public DataResult<List<Jobtitle>> getAll() {
-		
-		return this.jobtitleService.getAll();
-	}
-    
+
 }

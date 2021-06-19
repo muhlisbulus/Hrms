@@ -49,7 +49,7 @@ public class ResumeManager implements ResumeService{
 	@Override
 	public DataResult<List<ResumeGetDto>> findAllByCandidateUserId(int id) {
 		
-	   return new SuccessDataResult<List<ResumeGetDto>>(this.dtoConverterService.dtoConverter(this.resumeDao.findAll(),ResumeGetDto.class));
+	   return new SuccessDataResult<List<ResumeGetDto>>(this.dtoConverterService.dtoConverter(this.resumeDao.findAllByCandidateUserId(id),ResumeGetDto.class));
 
 	
 	}

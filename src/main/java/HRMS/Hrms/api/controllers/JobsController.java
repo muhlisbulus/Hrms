@@ -3,7 +3,10 @@ package HRMS.Hrms.api.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,6 +19,7 @@ import HRMS.Hrms.entities.concretes.Job;
 
 @RestController
 @RequestMapping("/api/jobs")
+@CrossOrigin
 public class JobsController {
 	private JobService jobService;
 
@@ -28,7 +32,7 @@ public class JobsController {
 	public DataResult<List<Job>> getAll(){
 		return this.jobService.getAll();
 	}
-	@GetMapping("/add")
+	@PostMapping("/add")
 	public Result add(@RequestBody Job job) {
 		return this.jobService.add(job);
 		
@@ -47,9 +51,13 @@ public class JobsController {
 		return this.jobService.findByActiveTrueOrderByCreatedTimeDesc();
 	}
 	@GetMapping("/findByIdAndActiveTrue")
-	public DataResult<Job> findByIdAndActiveTrue(int id){
+	public DataResult<Job> findByIdAndActiveTrue(@RequestParam int id){
 		return this.findByIdAndActiveTrue(id);
 		
 	}
 	
+	@PutMapping("/updateActive")
+	public DataResult<Job> updateActive(@RequestParam int id,@RequestParam boolean active){
+		return this.jobService.updateActive(id, active);
+	}
 }

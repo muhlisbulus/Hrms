@@ -10,6 +10,6 @@ public interface EmployeeService {
 	
 	
 	DataResult<List<Employee>> getAll();
-	DataResult<Boolean> confirmEmployer(Employer employer,Employee employee);
+	//DataResult<Boolean> confirmEmployer(Employer employer,Employee employee);
 
 }

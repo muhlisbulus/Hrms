@@ -10,6 +10,7 @@ import HRMS.Hrms.core.utilities.results.DataResult;
 import HRMS.Hrms.core.utilities.results.Result;
 import HRMS.Hrms.core.utilities.results.SuccessDataResult;
 import HRMS.Hrms.core.utilities.results.SuccessResult;
+
 import HRMS.Hrms.dataAccess.abstracts.JobDao;
 import HRMS.Hrms.entities.concretes.Job;
 
@@ -18,13 +19,12 @@ import HRMS.Hrms.entities.concretes.Job;
 public class JobManager implements JobService {
 	private JobDao jobDao;
 	
-
 	@Autowired
-	public JobManager(JobDao jobDao) {
+	public JobManager(JobDao jobDao ) {
 		super();
 		this.jobDao = jobDao;
+		
 	}
-
 
 	@Override
 	public DataResult<List<Job>> getAll() {
@@ -66,6 +66,17 @@ public class JobManager implements JobService {
 		
 		return new SuccessDataResult<Job>(this.jobDao.findByIdAndActiveTrue(id)) ;
 	}
+
+	@Override
+	public DataResult<Job> updateActive(int id, boolean active) {
+		Job tempJob=jobDao.findById(id).orElse(null);
+		tempJob.setActive(active);
+		this.jobDao.save(tempJob);
+		return new SuccessDataResult<Job>(tempJob);
+	}
+
+
+	
 
 	
 

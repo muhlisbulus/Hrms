@@ -19,6 +19,7 @@ public class JobPostingAddDto {
 	private int employerId;
 	private int cityId;
 	private int jobTitleId;
+	private int workTimeId;
 	private String description;
 	private int maxSalary;
 	private int minSalary;

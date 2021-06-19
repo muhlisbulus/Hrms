@@ -1,8 +1,7 @@
 package HRMS.Hrms.entities.concretes;
 
 
-import java.time.LocalDate;
-import java.util.Date;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -43,10 +42,12 @@ public class Job {
 	private boolean active;
 	
 	@Column(name="latest_apply_time")
-	private LocalDate latestApplyTime; 
+	private String latestApplyTime; 
 	
 	@Column(name="created_time")
-	private Date createdTime;
+	private String createdTime;
+	
+
 	
 	@ManyToOne()
 	@JoinColumn(name="employer_id")
@@ -57,10 +58,17 @@ public class Job {
 	private City city;
 	
 	
-	
 	@ManyToOne()
 	@JoinColumn(name="job_title_id")
 	private Jobtitle jobtitle;
+	
+	@ManyToOne()
+	@JoinColumn(name="work_time_id")
+	private WorkTime workTime;
+	
+	@ManyToOne()
+	@JoinColumn(name= "way_of_working_id")
+	private WayOfWorking wayOfWorking;
 	
 	
 	

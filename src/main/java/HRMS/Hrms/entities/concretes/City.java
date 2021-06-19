@@ -36,8 +36,6 @@ public class City {
 	private String cityName;
 	
     
-	@OneToMany(mappedBy = "city")
-	private List<Job> jobs;
 	
 	
 
